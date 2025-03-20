@@ -5,6 +5,7 @@ import json
 
 
 URL = "https://opendata.elia.be/api/explore/v2.1/catalog/datasets/ods177/records?limit=2&offset=0"
+URL2 ="https://opendata.elia.be/api/explore/v2.1/catalog/datasets/ods177/records?limit=2&refine=datetime%3A%222025%22"
 
 def extract_data (URL):
     response = requests.get(URL)
@@ -17,9 +18,11 @@ def extract_data (URL):
         print(json.dumps(data, indent=2)) # pretty print
         records = data['results']
         df = pd.json_normalize(records)
+        print (len(df))
         print(df)
+        
         return df
     
 
 
-extract_data(URL)
+extract_data(URL2)
