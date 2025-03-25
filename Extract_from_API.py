@@ -7,7 +7,7 @@ import pyodbc
 
 URL = "https://opendata.elia.be/api/explore/v2.1/catalog/datasets/ods177/records"
 start_datetime = datetime(2025, 1, 1, 0, 0)
-end_datetime = datetime(2025, 1, 1, 23, 59)
+end_datetime = datetime(2025, 1, 3, 23, 59)
 
 def extract_data_by_day(URL, start_datetime, end_datetime):
     # Parameters for filtering and pagination
