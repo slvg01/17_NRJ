@@ -6,8 +6,8 @@ from datetime import datetime, timedelta
 import pyodbc
 
 URL = "https://opendata.elia.be/api/explore/v2.1/catalog/datasets/ods177/records"
-start_datetime = datetime(2024, 5, 22, 0, 0)
-end_datetime = datetime(2025, 2, 28, 23, 59)
+start_datetime = datetime(2019, 1, 1 , 0, 0)
+end_datetime = datetime(2024, 5, 21, 23, 59)
 
 # Configuration de la connexion à SQL Server
 server = 'localhost\SQLEXPRESS'
