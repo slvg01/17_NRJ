@@ -1,4 +1,6 @@
-# 🇧🇪 API-SSMS-SQL-Tableau Project on Belgium Energy Production
+⚡ *This project is a work in progress!* ⚡
+
+# API-SSMS-SQL-Tableau Project on Belgium Energy Production
 
 ## 🚀 Project Overview
 
@@ -12,7 +14,7 @@ This project aims to:
 
 ## 📂 In this Repo, You Will Find:
 
-✅ A **PDF export** of the Tableau dashboard [(.pdf)](https://github.com/slvg01/13_Cov)  
+✅ A **PDF export** of the Tableau dashboard [(.pdf)](https://github.com/slvg01/84.16_Belgium_nrj_grid/.......)  
 ✅ The **Python script** to fetch data via API and load it into SQL  
 ✅ The **requirements.txt** file listing the necessary libraries to run the script  
 
