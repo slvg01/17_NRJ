@@ -6,14 +6,14 @@ from datetime import datetime, timedelta
 import pyodbc
 
 
-#dataset_id = "ods033"  # old dataset
-dataset_id = "ods177"  #new dataset
+dataset_id = "ods033"  # old dataset
+#dataset_id = "ods177"  #new dataset
 
 
 URL = f'https://opendata.elia.be/api/explore/v2.1/catalog/datasets/{dataset_id}/records'
 if dataset_id == "ods033":
-    start_datetime = datetime(2019, 1, 1 , 0, 0)
-    end_datetime = datetime(2019, 1, 1, 23, 59)
+    start_datetime = datetime(2018, 1, 1 , 0, 0)
+    end_datetime = datetime(2024, 5, 21, 23, 59)
 else:
     start_datetime = datetime(2024, 5, 22 , 0, 0)
     end_datetime = datetime(2025, 2, 28, 23, 59)
@@ -90,7 +90,7 @@ def extract_data_by_day(URL, start_datetime, end_datetime):
     print(df.dtypes)
     print(df.head(1))  # Display first few rows for inspection
     print(df.tail(1))  # Display first few rows for inspection
-    df.to_csv('data.csv', index=False)  # Save the data to a CSV file
+    #df.to_csv('data.csv', index=False)  # Save the data to a CSV file
     
     return df
 
