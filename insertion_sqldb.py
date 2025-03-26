@@ -6,8 +6,8 @@ from datetime import datetime, timedelta
 import pyodbc
 
 
-dataset_id = "ods033"  # old dataset
-#dataset_id = "ods177"  #new dataset
+#dataset_id = "ods033"  # old dataset
+dataset_id = "ods177"  #new dataset
 
 
 URL = f'https://opendata.elia.be/api/explore/v2.1/catalog/datasets/{dataset_id}/records'
@@ -21,8 +21,6 @@ else:
 # Configuration de la connexion à SQL Server
 server = 'localhost\SQLEXPRESS'
 database = 'nrj_data'
-
-
 
 
 
@@ -83,8 +81,10 @@ def extract_data_by_day(URL, start_datetime, end_datetime):
     # Normalize the JSON response into a flat table (DataFrame)
     df = pd.json_normalize(all_records)
     df['datetime'] = pd.to_datetime(df['datetime']).dt.tz_localize(None)
-    df.to_pickle("data.pkl")
-    
+    if dataset_id == "ods033":
+        df.to_pickle("data_old.pkl")
+    else:
+        df.to_pickle("data_new.pkl")    
     
     print(f"Number of lines: {len(df)}")
     print(df.dtypes)
@@ -106,6 +106,8 @@ def create_connection ():
         return conn  # Return the connection object
     except Exception as e:
         print(f"Failed to connect: {e}")
+
+
 
 # Fonction pour charger les données dans la table SQL Server
 def load_data_to_sql(df, table_name):
