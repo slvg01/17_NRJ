@@ -83,13 +83,14 @@ def extract_data_by_day(URL, start_datetime, end_datetime):
     # Normalize the JSON response into a flat table (DataFrame)
     df = pd.json_normalize(all_records)
     df['datetime'] = pd.to_datetime(df['datetime']).dt.tz_localize(None)
-
+    df.to_pickle("data.pkl")
     
     
     print(f"Number of lines: {len(df)}")
     print(df.dtypes)
     print(df.head(1))  # Display first few rows for inspection
     print(df.tail(1))  # Display first few rows for inspection
+    
     #df.to_csv('data.csv', index=False)  # Save the data to a CSV file
     
     return df
