@@ -14,7 +14,7 @@ This project aims to:
 
 ## 📂 In this Repo, You Will Find:
 
-✅ A **PDF export** of the Tableau dashboard [(.pdf)](https://github.com/slvg01/84.16_Belgium_nrj_grid/.......)  
+✅ A **PDF export** of the Tableau dashboard [(.pdf)](https://github.com/slvg01/84.16_Belgium_nrj_grid/blob/main/nrj_mix_work_in_progress.pdf)  
 ✅ The **Python script** to fetch data via API and load it into SQL  
 ✅ The **requirements.txt** file listing the necessary libraries to run the script  
 
