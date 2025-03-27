@@ -1,6 +1,6 @@
 nrj_env/
 *.csv
-*.sql
+#*.sql
 *.pkl
 
 # Byte-compiled / optimized / DLL files
