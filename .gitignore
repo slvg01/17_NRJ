@@ -2,6 +2,7 @@ nrj_env/
 *.csv
 #*.sql
 *.pkl
+*.pbix
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
