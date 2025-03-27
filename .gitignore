@@ -1,4 +1,6 @@
 nrj_env/
+/nrj_env/
+**nrj_env/
 *.csv
 #*.sql
 *.pkl
