@@ -6,7 +6,7 @@
 
 This project aims to:
 
-- Retrieve data from Elia's datasets via their API ([Elia Open Data](https://opendata.elia.be/)) concerning:
+- Retrieve data from ([Elia's OpenData platform](https://opendata.elia.be/))  and at a later stage from ([ENTSO new transparency platform](https://newtransparency.entsoe.eu/)) via their API concerning:
   - **Electricity production and mix in Belgium** (datasets: [ODS177](https://opendata.elia.be/explore/dataset/ods177/) and [ODS033](https://opendata.elia.be/explore/dataset/ods033/))
   - **Instantaneous grid load** (dataset: [ODS169](https://opendata.elia.be/explore/dataset/ods169/))
 - Load and store these data in SSMS to create an SQL database
