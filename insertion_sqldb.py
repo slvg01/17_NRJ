@@ -7,8 +7,8 @@ import pyodbc
 
 
 #dataset_id = "ods033"  # old dataset generated 
-#dataset_id = "ods177"  #new dataset generated power
-dataset_id = "ods036"  # old dataset installed power
+dataset_id = "ods177"  #new dataset generated power
+#dataset_id = "ods036"  # old dataset installed power
 #dataset_id = "ods179"  # new dataset installed power
 
 
@@ -18,7 +18,7 @@ if dataset_id == "ods033" or dataset_id == "ods036":
     start_datetime = datetime(2018, 1, 1 , 0, 0)
     end_datetime = datetime(2023, 1, 1, 23, 59)
 else:
-    start_datetime = datetime(2024, 5, 22 , 0, 0)
+    start_datetime = datetime(2025, 2, 1 , 0, 0)
     end_datetime = datetime(2025, 3, 31, 23, 59)
 
 # Configuration de la connexion à SQL Server
@@ -93,10 +93,14 @@ def extract_data_by_day(URL, start_datetime, end_datetime):
     if dataset_id == "ods033" or dataset_id == "ods177":
         df['datetime'] = pd.to_datetime(df['datetime']).dt.tz_localize(None)
    
-    if dataset_id == "ods033" or dataset_id == "ods036":
-        df.to_pickle("data_old.pkl")
-    else:
-        df.to_pickle("data_new.pkl")    
+    if dataset_id == "ods033" :
+        df.to_pickle("prod_old.pkl")
+    elif dataset_id == "ods177":
+        df.to_pickle("prod_new.pkl")
+    elif dataset_id == "ods036":  
+        df.to_pickle("installed_power_old.pkl")
+    elif dataset_id == "ods179":
+        df.to_pickle("installed_power_new.pkl")
     
     print(f"Number of lines: {len(df)}")
     print(df.dtypes)
