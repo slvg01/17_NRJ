@@ -6,17 +6,20 @@ from datetime import datetime, timedelta
 import pyodbc
 
 
-#dataset_id = "ods033"  # old dataset
-dataset_id = "ods177"  #new dataset
+#dataset_id = "ods033"  # old dataset generated 
+#dataset_id = "ods177"  #new dataset generated power
+#dataset_id = "ods036"  # old dataset installed power
+dataset_id = "ods178"  # new dataset installed power
+
 
 
 URL = f'https://opendata.elia.be/api/explore/v2.1/catalog/datasets/{dataset_id}/records'
-if dataset_id == "ods033":
+if dataset_id == "ods033" or dataset_id == "ods036":
     start_datetime = datetime(2018, 1, 1 , 0, 0)
     end_datetime = datetime(2024, 5, 21, 23, 59)
 else:
     start_datetime = datetime(2024, 5, 22 , 0, 0)
-    end_datetime = datetime(2025, 2, 28, 23, 59)
+    end_datetime = datetime(2025, 3, 31, 23, 59)
 
 # Configuration de la connexion à SQL Server
 server = 'localhost\SQLEXPRESS'
@@ -81,7 +84,7 @@ def extract_data_by_day(URL, start_datetime, end_datetime):
     # Normalize the JSON response into a flat table (DataFrame)
     df = pd.json_normalize(all_records)
     df['datetime'] = pd.to_datetime(df['datetime']).dt.tz_localize(None)
-    if dataset_id == "ods033":
+    if dataset_id == "ods033" or dataset_id == "ods036":
         df.to_pickle("data_old.pkl")
     else:
         df.to_pickle("data_new.pkl")    
@@ -91,7 +94,7 @@ def extract_data_by_day(URL, start_datetime, end_datetime):
     print(df.head(1))  # Display first few rows for inspection
     print(df.tail(1))  # Display first few rows for inspection
     
-    #df.to_csv('data.csv', index=False)  # Save the data to a CSV file
+    df.to_csv('data.csv', index=False)  # Save the data to a CSV file
     
     return df
 
@@ -130,7 +133,7 @@ df = extract_data_by_day(URL, start_datetime, end_datetime)
 
 
 # Charger les données dans SQL Server
-if dataset_id == "ods033":
+if dataset_id == "ods033" or dataset_id == "ods036":
     load_data_to_sql(df, 'prod_old')
 else:
     load_data_to_sql(df, 'prod_new')    
