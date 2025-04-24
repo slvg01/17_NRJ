@@ -15,14 +15,14 @@ dataset_id = "ods036"  # old dataset installed power
 
 URL = f'https://opendata.elia.be/api/explore/v2.1/catalog/datasets/{dataset_id}/records'
 if dataset_id == "ods033" or dataset_id == "ods036":
-    start_datetime = datetime(2018, 1, 1 , 0, 0)
-    end_datetime = datetime(2024, 5, 21, 23, 59)
+    start_datetime = datetime(2022, 12, 31 , 0, 0)
+    end_datetime = datetime(2023, 1, 3, 23, 59)
 else:
     start_datetime = datetime(2024, 5, 22 , 0, 0)
     end_datetime = datetime(2025, 3, 31, 23, 59)
 
 # Configuration de la connexion à SQL Server
-server = 'localhost\SQLEXPRESS'
+server = r'localhost\SQLEXPRESS'
 database = 'nrj_data'
 
 
@@ -42,11 +42,18 @@ def extract_data_by_day(URL, start_datetime, end_datetime):
         
         while True:
             # Construct API request with the specific day filter
-            params = {
+            if dataset_id == "ods033" or dataset_id == "ods177" :
+                params = {
                 "limit": limit,
                 "offset": offset,
                 "refine": f'datetime:"{current_date.strftime("%Y-%m-%d")}"'  # Filter by date
-            }
+                }
+            else: 
+                params = {
+                "limit": limit,
+                "offset": offset,
+                "refine": f'date:"{current_date.strftime("%Y-%m-%d")}"'  # Filter by date
+                }  
             
             response = requests.get(URL, params=params)
             
@@ -83,7 +90,9 @@ def extract_data_by_day(URL, start_datetime, end_datetime):
     
     # Normalize the JSON response into a flat table (DataFrame)
     df = pd.json_normalize(all_records)
-    df['datetime'] = pd.to_datetime(df['datetime']).dt.tz_localize(None)
+    if dataset_id == "ods033" or dataset_id == "ods177":
+        df['datetime'] = pd.to_datetime(df['datetime']).dt.tz_localize(None)
+   
     if dataset_id == "ods033" or dataset_id == "ods036":
         df.to_pickle("data_old.pkl")
     else:
@@ -133,10 +142,15 @@ df = extract_data_by_day(URL, start_datetime, end_datetime)
 
 
 # Charger les données dans SQL Server
-if dataset_id == "ods033" or dataset_id == "ods036":
+if dataset_id == "ods033":
     load_data_to_sql(df, 'prod_old')
-else:
-    load_data_to_sql(df, 'prod_new')    
+elif dataset_id == "ods177":
+    load_data_to_sql(df, 'prod_new')
+elif dataset_id == "ods036":
+    load_data_to_sql(df, 'installed_power_old')
+elif dataset_id == "ods179":
+    load_data_to_sql(df, 'installed_power_new')
+    
 
 
 
