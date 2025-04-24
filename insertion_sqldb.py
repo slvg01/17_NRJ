@@ -15,8 +15,8 @@ dataset_id = "ods036"  # old dataset installed power
 
 URL = f'https://opendata.elia.be/api/explore/v2.1/catalog/datasets/{dataset_id}/records'
 if dataset_id == "ods033" or dataset_id == "ods036":
-    start_datetime = datetime(2022, 12, 31 , 0, 0)
-    end_datetime = datetime(2023, 1, 3, 23, 59)
+    start_datetime = datetime(2018, 1, 1 , 0, 0)
+    end_datetime = datetime(2023, 1, 1, 23, 59)
 else:
     start_datetime = datetime(2024, 5, 22 , 0, 0)
     end_datetime = datetime(2025, 3, 31, 23, 59)
