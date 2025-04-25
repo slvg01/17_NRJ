@@ -1,0 +1,38 @@
+CAP (Capacitor Battery)
+CCGT (Combined Cycle GT+ST)
+CE (Internal Combustion Engine)
+CHEM (Chemical Battery)
+FC (Fuel Cell)
+GT (Gas Turbine)
+HP (Hydraulic Pump Unit)
+HPT (Hydraulic Pump and Turbine Unit)
+HT (Hydraulic Turbine Unit)
+NUC (Nuclear Plant)
+PV (Photovoltaic Park)
+RoR (Hydraulic Unit Run of River)
+ST (Steam Turbine)
+TJ (Turbo Jet)
+WOF (Wind Park Offshore)
+WON (Wind Park Onshore)
+
+
+OLD
+
+
+WKK		Aggregated Power Plant 
+CL		Classical Cogeneration Unit 
+		Combined Cycle 
+CCGT  	combined Cycle Gas Turbine 
+		Combined Cycle Steam Turbine 
+D		Diesel 
+GT		Gas Turbine 
+HU		Hydraulic Unit 
+		Hydraulic Unit - Pump Station 
+		Hydraulic Unit - Turbine Station 
+		Hydraulic Unit Run Of River (Spark) 
+IS		Incinerator Station 
+NU		Nuclear 
+		Renewable Energy - Solar (Spark) 
+TJ		Turbo Jet 
+WT		Wind Turbine - Off Shore 
+WT 		Wind Turbine - On Shore
