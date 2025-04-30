@@ -9,15 +9,28 @@ import pyodbc
 
 
 #ENTSOE PARAMETERS 
-api_key = ""
+api_key = "f6b4a73e-eb93-4ea5-80e9-c58b8500c7a6"
 API_URL = r'https://web-api.tp.entsoe.eu/api'
 area_key = '10YBE----------2'  
 country_code = 'BE'  
 start = pd.Timestamp('2025-04-01', tz='Europe/Brussels')
 end = pd.Timestamp('2025-04-02', tz='Europe/Brussels')
 
-#client = EntsoePandasClient(api_key=api_key)
-#df = client.query_generation(country_code=country_code, start=start, end=end)
+client = EntsoePandasClient(api_key=api_key)
+
+
+df = client.query_generation(country_code=country_code, start=start, end=end)
+print(df.head())
+print(df.info)
+print('columnsname')
+print ('/n')
+print(df.columns)
+print(df.index)
+print(f'nbline: {len(df)}')
+
+
+
+
 
 
 
@@ -26,7 +39,6 @@ end = pd.Timestamp('2025-04-02', tz='Europe/Brussels')
 
 
 """
-
 #dataset_id = "ods033"  # old dataset generated 
 #dataset_id = "ods177"  #new dataset generated power
 #dataset_id = "ods036"  # old dataset installed power
