@@ -21,21 +21,8 @@ client = EntsoePandasClient(api_key=api_key)
 
 df = client.query_generation(country_code=country_code, start=start, end=end)
 print(df.head())
-print(df.info)
-print('columnsname')
-print ('/n')
 print(df.columns)
-print(df.index)
 print(f'nbline: {len(df)}')
-
-
-
-
-
-
-
-
-
 
 
 """
