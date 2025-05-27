@@ -27,16 +27,16 @@ def extract_data_by_day(URL, start_datetime, end_datetime):
             params = {
                 "limit": limit,
                 "offset": offset,
-                "refine": f'datetime:"{current_date.strftime("%Y-%m-%d")}"'  # Filter by date
+                "refine": f'datetime:"{current_date.strftime("%Y-%m-%d")}"'  
             }
             
             response = requests.get(URL, params=params)
             
-            if response.status_code == 429:  # Rate-limit error (too many requests)
+            if response.status_code == 429:  # si Rate-limit error (too many requests)
                 if retry_attempts > 0:
                     print(f"Rate limit hit. Retrying in {backoff_time} seconds...")
                     time.sleep(backoff_time)
-                    backoff_time *= 2  # Exponential backoff
+                    backoff_time *= 2  # Exponential backoff trying to overcome the limit
                     retry_attempts -= 1
                     continue
                 else:
