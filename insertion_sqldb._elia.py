@@ -61,7 +61,7 @@ def extract_data_by_day(URL, start_datetime, end_datetime):
                 if retry_attempts > 0:
                     print(f"Rate limit hit. Retrying in {backoff_time} seconds...")
                     time.sleep(backoff_time)
-                    backoff_time *= 2  # Exponential backoff
+                    backoff_time *= 2  # Exponential backoff fac 2
                     retry_attempts -= 1
                     continue
                 else:
